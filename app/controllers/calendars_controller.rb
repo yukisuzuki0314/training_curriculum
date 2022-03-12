@@ -2,7 +2,7 @@ class CalendarsController < ApplicationController
 
   # １週間のカレンダーと予定が表示されるページ
   def index
-    getWeek
+    get_week # メソッド名 getWeekから修正
     @plan = Plan.new
   end
 
@@ -18,12 +18,12 @@ class CalendarsController < ApplicationController
     params.require(:calendars).permit(:date, :plan)
   end
 
-  def getWeek
+  def get_week # getWeekを小文字のスネークケースに
     wdays = ['(日)','(月)','(火)','(水)','(木)','(金)','(土)']
 
     # Dateオブジェクトは、日付を保持しています。下記のように`.today.day`とすると、今日の日付を取得できます。
     @todays_date = Date.today
-    # 例)　今日が2月1日の場合・・・ Date.today.day => 1日
+    # 例) 今日が2月1日の場合・・・ Date.today.day => 1日
 
     @week_days = []
 
@@ -32,9 +32,9 @@ class CalendarsController < ApplicationController
     7.times do |x|
       today_plans = []
       plans.each do |plan|
-        today_plans.push(plan.plan) if plan.date == @todays_date + x
+        today_plans.push(plan.plan)if plan.date == @todays_date + x 
       end
-      days = { :month => (@todays_date + x).month, :date => (@todays_date+x).day, :plans => today_plans}
+      days = { month: (@todays_date + x).month, date: (@todays_date+x).day, plans: today_plans}  #ハッシュロケットをシンボル型に置き換え。
       @week_days.push(days)
     end
 
