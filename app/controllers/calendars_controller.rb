@@ -46,7 +46,7 @@ class CalendarsController < ApplicationController
       end
 
       days = { month: (@todays_date + x).month, date: (@todays_date+x).day, plans: today_plans, wday: wdays[wday_num]}   # Issue6 曜日表示
-　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　#ハッシュロケットをシンボル型に置き換え。
+#ハッシュロケットをシンボル型に置き換え。
 
       @week_days.push(days)
     end
