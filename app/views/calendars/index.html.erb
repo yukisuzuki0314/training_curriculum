@@ -7,13 +7,12 @@
     <%= f.submit '保存' %>
   <% end %>
 
-
 <%# divを削除%>
   <div class='calendar'>
     <% @week_days.each do |day| %>
       <div class='item'>
         <div class='date'>
-          <%= day[:month] %>/<%= day[:date] %><%= day[:wday] %>   <%# Issue5 日付表示,Issue6 曜日表示%>
+          <% day[:month] %>/<% day[:date] %>
         </div>
         <ul class='content'>
         <% if day[:plans].length != 0 %>
